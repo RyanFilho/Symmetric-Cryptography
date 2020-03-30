@@ -21,6 +21,18 @@ namespace SymmetricEncryptionAlgorithm
             { e.Handled = true; }
         }
 
+        public static char ReplacementCipherEncryption(char input, int shift)
+        {
+
+            return (char) (input + shift);
+        }
+
+        public static char ReplacementCipherDecryption(char input, int shift)
+        {
+
+            return (char)(input - shift);
+        }
+
         private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
             if (ShiftTextBox.Text == string.Empty)
@@ -29,20 +41,31 @@ namespace SymmetricEncryptionAlgorithm
             }
             else
             {
-                var inputValue = InputTextBox.Text;
-                var outputValue = string.Empty;
-                foreach (var item in inputValue)
+                var input = InputTextBox.Text;
+                var output = string.Empty;
+                var shift = int.Parse(ShiftTextBox.Text);
+
+                foreach (var item in input)
                 {
-                    outputValue = outputValue += ReplacementCipher(item, int.Parse(ShiftTextBox.Text));
+                    output = output += ReplacementCipherEncryption(item, shift);
                 }
-                OutputTextBox.Text = outputValue;
+
+                OutputTextBox.Text = output;
             }
         }
 
-        public static char ReplacementCipher(char ch, int key)
+        private void DecryptButton_Click(object sender, RoutedEventArgs e)
         {
-            char initialIndex = char.IsUpper(ch) ? 'A' : 'a';
-            return (char)((((ch + key) - initialIndex) % 26) + initialIndex);
+            var input = InputTextBox.Text;
+            var output = string.Empty;
+            var shift = int.Parse(ShiftTextBox.Text);
+
+            foreach (var item in input)
+            {
+                output = output += ReplacementCipherDecryption(item, shift);
+            }
+
+            OutputTextBox.Text = output;
         }
     }
 }
