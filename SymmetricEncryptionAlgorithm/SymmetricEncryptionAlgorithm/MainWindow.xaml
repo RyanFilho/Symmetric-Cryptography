@@ -9,7 +9,7 @@
     <Grid x:Name="gridMain">
         <TabControl HorizontalAlignment="Left" Height="427" VerticalAlignment="Top" Width="477">
             <TabItem Header="Replacement">
-                <Grid Background="#FFE5E5E5" Margin="0,-4,0,4">
+                <Grid Background="#FFE5E5E5">
                     <Label Content="THE SHIFT:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,9,0,0"/>
                     <TextBox x:Name="ShiftTextBox" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Margin="77,12,0,0" PreviewTextInput="NumberValidationTextBox" Text="0"/>
                     <Label Content="INPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
@@ -22,26 +22,29 @@
             </TabItem>
             <TabItem Header="Transposition">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="THE SHIFT:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,9,0,0"/>
-                    <TextBox x:Name="ShiftTextBox_Copy" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Margin="77,12,0,0" PreviewTextInput="NumberValidationTextBox" Text="0"/>
-                    <TextBox x:Name="InputTextBox_Copy" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,67,0,0"/>
-                    <TextBox x:Name="OutputTextBox_Copy" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,198,0,0" IsReadOnlyCaretVisible="True"/>
-                    <Button x:Name="EncryptButton_Copy" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="118,12,0,0" Click="EncryptButton_Click"/>
-                    <Button x:Name="DecryptButton_Copy" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="209,12,0,0"/>
+                    <Label Content="KEY:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,9,0,0"/>
+                    <TextBox x:Name="TranspositionKeyTextBox" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Margin="47,12,0,0"/>
+                    <TextBox x:Name="TranspositionInputTextBox" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,67,0,0"/>
+                    <TextBox x:Name="TranspositionOutputTextBox" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,198,0,0" IsReadOnlyCaretVisible="True"/>
+                    <Button x:Name="TranspositionEncryptButton" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="306,11,0,0" Click="TranspositionEncryptButton_Click"/>
+                    <Button x:Name="TranspositionDecryptButton" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="386,12,0,0" Click="TranspositionDecryptButton_Click"/>
+                    <Label Content="INPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                    <Label Content="OUTPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,172,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="One Way">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="34*"/>
-                        <ColumnDefinition Width="123*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="THE SHIFT:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,9,0,0"/>
-                    <TextBox x:Name="ShiftTextBox_Copy1" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Margin="77,12,0,0" PreviewTextInput="NumberValidationTextBox" Text="0"/>
-                    <TextBox x:Name="InputTextBox_Copy1" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,67,0,0" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="OutputTextBox_Copy1" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,198,0,0" IsReadOnlyCaretVisible="True" Grid.ColumnSpan="2"/>
-                    <Button x:Name="EncryptButton_Copy1" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="16,12,0,0" Click="EncryptButton_Click" Grid.Column="1"/>
-                    <Button x:Name="DecryptButton_Copy1" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="107,12,0,0" Grid.Column="1"/>
+                    <Label Content="KEY:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,9,0,0"/>
+                    <TextBox x:Name="KeyTextBox2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Margin="47,12,0,0" PreviewTextInput="NumberValidationTextBox"/>
+                    <TextBox x:Name="InputTextBox_Copy1" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,67,0,0"/>
+                    <TextBox x:Name="OutputTextBox_Copy1" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,198,0,0" IsReadOnlyCaretVisible="True"/>
+                    <Button x:Name="EncryptButton_Copy1" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="306,12,0,0" Click="EncryptButton_Click"/>
+                    <Button x:Name="DecryptButton_Copy1" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="386,12,0,0"/>
+                    <Label Content="INPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
+                    <Label Content="OUTPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,172,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="About">
