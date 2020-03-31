@@ -11,10 +11,7 @@ namespace SymmetricCryptographyAlgorithm
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
@@ -24,35 +21,20 @@ namespace SymmetricCryptographyAlgorithm
             { e.Handled = true; }
         }
 
-        public static char ReplacementCipherEncrypt(char input, int shift)
-        {
-
-            return (char)(input + shift);
-        }
-
-        public static char ReplacementCipherDecrypt(char input, int shift)
-        {
-
-            return (char)(input - shift);
-        }
+        public static char ReplacementCipherEncrypt(char input, int shift) => (char) (input + shift);
+        public static char ReplacementCipherDecrypt(char input, int shift) => (char) (input - shift);
 
         private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
             if (ShiftTextBox.Text == string.Empty)
-            {
                 MessageBox.Show("Shift value invalid!\nMust be a number.", "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
             else
             {
                 var input = InputTextBox.Text;
                 var output = string.Empty;
                 var shift = int.Parse(ShiftTextBox.Text);
-
                 foreach (var item in input)
-                {
                     output = output += ReplacementCipherEncrypt(item, shift);
-                }
-
                 OutputTextBox.Text = output;
             }
         }
@@ -60,20 +42,14 @@ namespace SymmetricCryptographyAlgorithm
         private void DecryptButton_Click(object sender, RoutedEventArgs e)
         {
             if (ShiftTextBox.Text == string.Empty)
-            {
                 MessageBox.Show("Shift value invalid!\nMust be a number.", "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
             else
             {
                 var input = InputTextBox.Text;
                 var output = string.Empty;
                 var shift = int.Parse(ShiftTextBox.Text);
-
                 foreach (var item in input)
-                {
                     output = output += ReplacementCipherDecrypt(item, shift);
-                }
-
                 OutputTextBox.Text = output;
             }
         }
@@ -81,9 +57,7 @@ namespace SymmetricCryptographyAlgorithm
         private void TranspositionEncryptButton_Click(object sender, RoutedEventArgs e)
         {
             if (TranspositionKeyTextBox.Text == string.Empty)
-            {
                 MessageBox.Show("Key value invalid!\nCan't be empty.", "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
             else
             {
                 var input = TranspositionInputTextBox.Text;
@@ -95,9 +69,7 @@ namespace SymmetricCryptographyAlgorithm
         private void TranspositionDecryptButton_Click(object sender, RoutedEventArgs e)
         {
             if (TranspositionKeyTextBox.Text == string.Empty)
-            {
                 MessageBox.Show("Key value invalid!\nCan't be empty.", "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
             else
             {
                 var input = TranspositionInputTextBox.Text;
@@ -109,10 +81,8 @@ namespace SymmetricCryptographyAlgorithm
         private static int[] GetShiftIndexes(string key)
         {
             List<KeyValuePair<int, char>> sortedKey = new List<KeyValuePair<int, char>>();
-
             int keyLength = key.Length;
             int[] indexes = new int[keyLength];
-
 
             for (int i = 0; i < keyLength; ++i)
                 sortedKey.Add(new KeyValuePair<int, char>(i, key[i]));
@@ -218,9 +188,7 @@ namespace SymmetricCryptographyAlgorithm
         private void OneTimePadDecryptButton_Click(object sender, RoutedEventArgs e)
         {
             if (OneTimePadKeyTextBox.Text == string.Empty)
-            {
                 MessageBox.Show("Key value invalid!\nCan't be empty.", "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
             else
             {
                 try
@@ -240,12 +208,7 @@ namespace SymmetricCryptographyAlgorithm
         {
             var result = new byte[data.Length];
             for (int i = 0; i < data.Length; i++)
-            {
-                var sum = (int)data[i] + (int)pad[i];
-                if (sum > 255)
-                    sum -= 255;
-                result[i] = (byte)sum;
-            }
+                result[i] = (byte) (data[i] + pad[i]);
             return result;
         }
 
@@ -253,21 +216,14 @@ namespace SymmetricCryptographyAlgorithm
         {
             var result = new byte[encrypted.Length];
             for (int i = 0; i < encrypted.Length; i++)
-            {
-                var dif = (int)encrypted[i] - (int)pad[i];
-                if (dif < 0)
-                    dif += 255;
-                result[i] = (byte)dif;
-            }
+                result[i] = (byte)(encrypted[i] - pad[i]);
             return result;
         }
         public static byte[] OneTimePadCipherGeneratePad(int size, int seed)
         {
             var random = new Random(Seed: seed);
             var bytesBuffel = new byte[size];
-
             random.NextBytes(bytesBuffel);
-
             return bytesBuffel;
         }
     }
