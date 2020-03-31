@@ -4,51 +4,47 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Symmetric Cryptography Algorithms" Height="458.425" Width="485">
+        Title="Algoritmos de Criptografia Simétrica" Height="540.425" Width="485">
     <Grid x:Name="gridMain">
-        <TabControl HorizontalAlignment="Left" Height="427" VerticalAlignment="Top" Width="477">
-            <TabItem Header="Replacement">
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="509" Stroke="Black" VerticalAlignment="Top" Width="477"/>
+        <TabControl HorizontalAlignment="Left" Height="427" VerticalAlignment="Top" Width="477" Margin="0,82,0,0">
+            <TabItem Header="SUBSTITUIÇÃO">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="SHIFT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
-                    <Label Content="INPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0"/>
-                    <Label Content="OUTPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,204,0,0"/>
+                    <Label Content="DESLOCAMENTO" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                    <Label Content="ENTRADA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0"/>
+                    <Label Content="SAÍDA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,204,0,0"/>
+                    <Button x:Name="EncryptButton" Content="Criptografar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="293,12,0,0" Click="EncryptButton_Click"/>
+                    <Button x:Name="DecryptButton" Content="Descriptografar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Margin="373,12,0,0" Click="DecryptButton_Click"/>
                     <TextBox x:Name="ShiftTextBox" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="20" Margin="10,39,0,0" PreviewTextInput="NumberValidationTextBox" Text="13" AcceptsReturn="True" AcceptsTab="True" MaxLength="2"/>
                     <TextBox x:Name="InputTextBox" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,95,0,0" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBox x:Name="OutputTextBox" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,235,0,0" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True"/>
-                    <Button x:Name="EncryptButton" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="306,12,0,0" Click="EncryptButton_Click"/>
-                    <Button x:Name="DecryptButton" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="386,12,0,0" Click="DecryptButton_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Transposition">
+            <TabItem Header="TRANSPOSIÇÃO">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="KEY:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                    <Label Content="CHAVE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                    <Label Content="ENTRADA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0"/>
+                    <Label Content="SAÍDA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,204,0,0"/>
+                    <Button x:Name="TranspositionEncryptButton" Content="Criptografar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="293,12,0,0" Click="TranspositionEncryptButton_Click"/>
+                    <Button x:Name="TranspositionDecryptButton" Content="Descriptografar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Margin="373,12,0,0" Click="TranspositionDecryptButton_Click"/>
                     <TextBox x:Name="TranspositionKeyTextBox" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,39,0,0" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBox x:Name="TranspositionInputTextBox" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,95,0,0" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBox x:Name="TranspositionOutputTextBox" HorizontalAlignment="Left" Height="104" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,235,0,0" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True"/>
-                    <Button x:Name="TranspositionEncryptButton" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="306,12,0,0" Click="TranspositionEncryptButton_Click"/>
-                    <Button x:Name="TranspositionDecryptButton" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="386,12,0,0" Click="TranspositionDecryptButton_Click"/>
-                    <Label Content="INPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,64,0,0"/>
-                    <Label Content="OUTPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,204,0,0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="One Time Pad">
+            <TabItem Header="USO ÚNICO">
                 <Grid Background="#FFE5E5E5">
-                    <Label Content="KEY (AUTO GENERATED)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
-                    <Label Content="OUTPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,260,0,0"/>
-                    <Label Content="INPUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,134,0,0"/>
-                    <Button x:Name="OneTimePadEncryptButton" Content="Encrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="306,12,0,0" Click="OneTimePadEncryptButton_Click"/>
-                    <Button x:Name="OneTimePadDecryptButton" Content="Decrypt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="386,12,0,0" Click="OneTimePadDecryptButton_Click"/>
+                    <Label Content="CHAVE (GERAÇÃO AUTOMÁTICA)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                    <Label Content="ENTRADA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,134,0,0"/>
+                    <Label Content="SAÍDA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,260,0,0"/>
+                    <Button x:Name="OneTimePadEncryptButton" Content="Criptografar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="293,12,0,0" Click="OneTimePadEncryptButton_Click"/>
+                    <Button x:Name="OneTimePadDecryptButton" Content="Descriptografar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Margin="373,12,0,0" Click="OneTimePadDecryptButton_Click"/>
                     <TextBox x:Name="OneTimePadKeyTextBox" HorizontalAlignment="Left" Height="90" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,39,0,0" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBox x:Name="OneTimePadInputTextBox" HorizontalAlignment="Left" Height="90" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,165,0,0" AcceptsReturn="True" AcceptsTab="True"/>
                     <TextBox x:Name="OneTimePadOutputTextBox" HorizontalAlignment="Left" Height="90" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" Margin="10,291,0,0" AcceptsReturn="True" AcceptsTab="True" IsReadOnly="True"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="About">
-                <Grid Background="#FFE5E5E5">
-                    <Label Content="Homework of Information Security Course &#xA;Developed by Ryan Sampaio Filho&#xD;&#xA;Centro Univesitário Fárias Brito" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="157" Width="301" FontWeight="Bold" FontSize="14"/>
-                </Grid>
-            </TabItem>
         </TabControl>
-
+        <Label Content="Centro Universitário Fárias Brito &#xA;Disciplina de Segurança da Informação &#xA;Professor Helano Matos Nogueira&#xA;Aluno Ryan Sampaio Filho" HorizontalAlignment="Left" VerticalAlignment="Top" Height="84" Width="301" FontWeight="Bold" FontSize="14"/>
     </Grid>
 </Window>

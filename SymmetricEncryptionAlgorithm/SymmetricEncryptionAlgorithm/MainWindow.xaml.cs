@@ -173,7 +173,8 @@ namespace SymmetricCryptographyAlgorithm
                 output.Append(unsortedColChars[currentRow, currentColumn]);
             }
 
-            return output.ToString();
+            string outputString = output.ToString().Replace("|", string.Empty);
+            return outputString;
         }
 
         private void OneTimePadEncryptButton_Click(object sender, RoutedEventArgs e)
