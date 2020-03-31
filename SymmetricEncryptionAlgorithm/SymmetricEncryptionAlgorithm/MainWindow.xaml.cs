@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace SymmetricEncryptionAlgorithm
+namespace SymmetricCryptographyAlgorithm
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -206,6 +206,69 @@ namespace SymmetricEncryptionAlgorithm
             return output.ToString();
         }
 
-        
+        private void OneTimePadEncryptButton_Click(object sender, RoutedEventArgs e)
+        {
+            var inputBytes = Encoding.Unicode.GetBytes(OneTimePadInputTextBox.Text);
+            byte[] pad = OneTimePadCipherGeneratePad(size: inputBytes.Length, seed: 1);
+            OneTimePadKeyTextBox.Text = Convert.ToBase64String(inArray: pad);
+            byte[] encrypted = OneTimePadCipherEncrypt(inputBytes, pad);
+            OneTimePadOutputTextBox.Text = Convert.ToBase64String(inArray: encrypted);
+        }
+
+        private void OneTimePadDecryptButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (OneTimePadKeyTextBox.Text == string.Empty)
+            {
+                MessageBox.Show("Key value invalid!\nCan't be empty.", "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                try
+                {
+                    var inputBytes = Convert.FromBase64String(OneTimePadInputTextBox.Text);
+                    var key = Convert.FromBase64String(OneTimePadKeyTextBox.Text);
+                    byte[] output = OneTimePadCipherDecrypt(inputBytes, key);
+                    OneTimePadOutputTextBox.Text = Encoding.Unicode.GetString(output);
+                }
+                catch(Exception exception)
+                {
+                    MessageBox.Show("Decrypt Error:\n" + exception.Message, "Attention, please.", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+        public static byte[] OneTimePadCipherEncrypt(byte[] data, byte[] pad)
+        {
+            var result = new byte[data.Length];
+            for (int i = 0; i < data.Length; i++)
+            {
+                var sum = (int)data[i] + (int)pad[i];
+                if (sum > 255)
+                    sum -= 255;
+                result[i] = (byte)sum;
+            }
+            return result;
+        }
+
+        public static byte[] OneTimePadCipherDecrypt(byte[] encrypted, byte[] pad)
+        {
+            var result = new byte[encrypted.Length];
+            for (int i = 0; i < encrypted.Length; i++)
+            {
+                var dif = (int)encrypted[i] - (int)pad[i];
+                if (dif < 0)
+                    dif += 255;
+                result[i] = (byte)dif;
+            }
+            return result;
+        }
+        public static byte[] OneTimePadCipherGeneratePad(int size, int seed)
+        {
+            var random = new Random(Seed: seed);
+            var bytesBuffel = new byte[size];
+
+            random.NextBytes(bytesBuffel);
+
+            return bytesBuffel;
+        }
     }
 }
