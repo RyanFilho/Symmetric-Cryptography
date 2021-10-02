@@ -1,2 +1,2 @@
 # Symmetric-Cryptography
-Symmetric cryptography project from the faculty of computer science.
+Computer science symmetric cryptography project.
